@@ -6,26 +6,25 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class DavisStaircase {
 
     // Complete the stepPerms function below.
-    static int stepPerms(int n) { return stepPermsl(n);}
     static int stepPerms(int n) {
-        
-        if (n==0 || n==1 )
-          return 1;
-        
-        else if (n==2) return 2;
-          int [] memo={1,1,2};
 
-  
-        for (int i=3;i <= n ; i++){
-            int count= memo[2]+ memo[1]+memo[0];
-            memo[0]=memo[1];
-            memo[1]=memo[2];
-            memo[2]=count;
+        if (n == 0 || n == 1)
+            return 1;
 
-}
+        else if (n == 2) return 2;
+        int[] memo = {1, 1, 2};
+
+
+        for (int i = 3; i <= n; i++) {
+            int count = memo[2] + memo[1] + memo[0];
+            memo[0] = memo[1];
+            memo[1] = memo[2];
+            memo[2] = count;
+
+        }
         return memo[2];
     }
 

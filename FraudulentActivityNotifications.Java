@@ -1,3 +1,6 @@
+
+
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -6,36 +9,35 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class FraudulentActivityNotifications {
 
     static int activityNotifications(int[] expenditure, int d) {
-           
-            if (expenditure.length<d+1)
-                return 0;
 
-            int noti=0;
+        if (expenditure.length < d + 1)
+            return 0;
 
-            for (int i =d,start=0;i<expenditure.length;i++,start++){
-                Arrays.sort(expenditure, start, i-1);
+        int noti = 0;
 
-                float median=0;
-            
-                if (d%2==1)
-            
-                    median = expenditure[d/2+start];
-            
-                else 
-                    median = (float)((expenditure[d/2+start])+ (expenditure[d/2+start]+1))/2;
+        for (int i = d, start = 0; i < expenditure.length; i++, start++) {
+            Arrays.sort(expenditure, start, i - 1);
 
-                if (median *2 <= expenditure[i])
-                    noti++;
+            float median;
 
+            if (d % 2 == 1)
 
-            }
+                median = expenditure[d / 2 + start];
+
+            else
+                median = (float) ((expenditure[d / 2 + start]) + (expenditure[d / 2 + start] + 1)) / 2;
+
+            if (median * 2 <= expenditure[i])
+                noti++;
 
 
+        }
 
-      return noti;
+
+        return noti;
 
     }
 
